@@ -1,7 +1,9 @@
 #ifndef MYWIDGET_H
 #define MYWIDGET_H
-
 #include <QWidget>
+#include <QPixmap>
+#include <QLabel>
+
 #include "tcpconnectionservice.h"
 
 class myWidget : public QWidget
@@ -13,10 +15,13 @@ public:
 signals:
 
 public slots:
-    void bgRGBUpdate(QByteArray &bytes);
+    void ReqHandler(QByteArray &bytes);
 
 private:
     TCPConnectionService cc;
+    void RGBUpdate(QJsonObject &obj);
+    void ImageUpdate(QJsonObject &ob);
+    QLabel *lbl_;
 };
 
 #endif // MYWIDGET_H

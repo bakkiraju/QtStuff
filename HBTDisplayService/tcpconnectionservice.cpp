@@ -54,7 +54,7 @@ void TCPConnectionService::onReadyRead()
     update(datas);
 
     for (QTcpSocket* socket : _sockets) {
-        if (socket != sender)
+        if (socket == sender)
             socket->write(QByteArray::fromStdString(sender->peerAddress().toString().toStdString() + ": " + datas.toStdString()));
     }
 }
